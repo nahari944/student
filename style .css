@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 li, a, button {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
@@ -15,18 +20,17 @@ li, a, button {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 10%;
-    background-color: #4c4c4f;
-    border-radius: 0 0 10px 10px;
-    position: fixed; /* يثبت Navbar */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #4c4c4f; /* نفس لون navbar */
+  padding: 15px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 10px 10px;
 }
 
 .nav_links li a.active {
@@ -38,7 +42,6 @@ header {
 
 body {
     scroll-behavior: smooth; /* 🔹 smooth scroll */
-    padding-top: 100px; /* مسافة مساوية تقريبا لارتفاع الـheader */
 }
 
 

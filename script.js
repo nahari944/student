@@ -99,7 +99,35 @@ document.querySelectorAll('.hero-btn, .cta, .learn-btn').forEach(link => {
     targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+  // ELEMENTS
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinksList = document.querySelector('.nav_links'); // <-- نضيف الصنف هنا (هو اللي CSS يتعامل معه)
 
+  // Safety: إذا ما لقي العناصر ما نعمل شيء
+  if (menuToggle && navLinksList) {
+
+    // فتح/قفل القائمة عند الضغط على البورغر
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinksList.classList.toggle('active'); // نضيف/نحذف الصنف على .nav_links
+      // نغير شكل أيقونة البورغر (☰ -> ✖)
+      menuToggle.textContent = isOpen ? '✖' : '☰';
+      // لمنع سك롤 الصفحة عند فتح القائمة على بعض الأجهزة
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // غلق القايمة عند الضغط على أي رابط داخلها (محمول)
+    navLinksList.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (navLinksList.classList.contains('active')) {
+          navLinksList.classList.remove('active');
+          menuToggle.textContent = '☰';
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  } else {
+    console.warn('Burger menu: required elements not found (#menu-toggle or .nav_links).');
+  }
 
 
 
